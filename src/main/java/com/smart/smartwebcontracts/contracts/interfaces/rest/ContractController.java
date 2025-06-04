@@ -1,0 +1,74 @@
+package com.smart.smartwebcontracts.contracts.interfaces.rest;
+
+import com.smart.smartwebcontracts.contracts.application.service.ContractCommandServiceImpl;
+import com.smart.smartwebcontracts.contracts.application.service.ContractQueryServiceImpl;
+import com.smart.smartwebcontracts.contracts.infrastructure.blockchain.dto.HashRecordDTO;
+import com.smart.smartwebcontracts.contracts.domain.model.Contract;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/api/contracts")
+@RequiredArgsConstructor
+public class ContractController {
+
+    private final ContractCommandServiceImpl contractCommandService;
+    private final ContractQueryServiceImpl contractQueryService;
+
+    // Crear contrato
+    @PostMapping
+    public ResponseEntity<Contract> createContract(
+            @RequestParam UUID clientId,
+            @RequestParam UUID developerId,
+            @RequestParam UUID webServiceId) {
+        Contract contract = contractCommandService.handleCreateContract(clientId, developerId, webServiceId);
+        return ResponseEntity.ok(contract);
+    }
+
+    // Firmar contrato
+    @PostMapping("/{id}/sign")
+    public ResponseEntity<Contract> signContract(@PathVariable UUID id) {
+        Contract contract = contractCommandService.handleSignContract(id);
+        return ResponseEntity.ok(contract);
+    }
+
+    // Finalizar contrato
+    @PostMapping("/{id}/finalize")
+    public ResponseEntity<Contract> finalizeContract(@PathVariable UUID id) {
+        Contract contract = contractCommandService.handleFinalizeContract(id);
+        return ResponseEntity.ok(contract);
+    }
+
+    // Obtener contrato por ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Contract> getContractById(@PathVariable UUID id) {
+        Contract contract = contractQueryService.handleGetContractById(id);
+        return ResponseEntity.ok(contract);
+    }
+
+    // Obtener contratos activos del usuario
+    @GetMapping("/active")
+    public ResponseEntity<List<Contract>> getActiveContractsByUser(@RequestParam UUID userId) {
+        List<Contract> contracts = contractQueryService.handleGetActiveContractsByUser(userId);
+        return ResponseEntity.ok(contracts);
+    }
+
+    // Obtener todos los hashes registrados en blockchain
+    @GetMapping("/blockchain/hashes")
+    public ResponseEntity<List<HashRecordDTO>> getAllHashesFromBlockchain() {
+        List<HashRecordDTO> hashes = contractQueryService.handleGetAllHashRecords();
+        return ResponseEntity.ok(hashes);
+    }
+
+    @PostMapping("/blockchain/register")
+    public ResponseEntity<String> testRegisterHash(@RequestParam String hash) {
+        String txHash = contractCommandService.registerContractHashOnBlockchain(hash);
+        return ResponseEntity.ok(txHash);
+    }
+
+
+}
