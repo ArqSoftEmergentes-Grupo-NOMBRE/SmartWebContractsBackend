@@ -1,0 +1,60 @@
+[
+  {
+    "index": 0,
+    "submissions": [
+      {
+        "milestone": 0,
+        "submission": {
+          "url": "https://example.com/submission1",
+          "status": "Pending",
+          "comments": "Cound't finish the project, I will work on it later."
+        }
+      },
+      {
+        "milestone": 0,
+        "submission": {
+          "url": "https://example.com/submission2",
+          "status": "Approved",
+          "comments": "Working right now."
+        }
+      },
+      {
+        "milestone": 0,
+        "submission": {
+          "url": "a",
+          "status": "Pending",
+          "comments": "a"
+        }
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "submissions": [
+      {
+        "milestone": 0,
+        "submission": {
+          "url": "https://example.com/submission1",
+          "status": "Pending",
+          "comments": "Looking good, but needs some adjustments."
+        }
+      },
+      {
+        "milestone": 0,
+        "submission": {
+          "url": "https://example.com/submission2",
+          "status": "Approved",
+          "comments": "Now it looks perfect! Ready for the next milestone."
+        }
+      },
+      {
+        "milestone": 1,
+        "submission": {
+          "url": "https://example.com/submission3",
+          "status": "Approved",
+          "comments": "Great job! Ready for the next milestone."
+        }
+      }
+    ]
+  }
+]

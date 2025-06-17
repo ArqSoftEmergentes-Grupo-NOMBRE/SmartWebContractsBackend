@@ -1,0 +1,29 @@
+[
+  {
+    "id": "mbzyazd9",
+    "fullName": "Fernando Diaz",
+    "email": "fernando@gmail.com",
+    "role": true,
+    "password": "$2b$10$Y2zVu4VrhqlCm4vYKpvx.OXkJQDRS41d1uaIk3ISW049tKqzXEglu",
+    "created": "2025-06-17T03:15:51.558Z",
+    "avatar": "https://randomuser.me/api/portraits/men/75.jpg",
+    "phone": "942 232 674",
+    "wallet": "Wallet conectada: 0xF3BECF98429A9C2FE56038CA45A456F0B1A2D3E",
+    "linkedin": "https://www.linkedin.com/in/fernando-diaz-123456789/"
+  },
+  {
+    "fullName": "Marcelo Scerpella",
+    "email": "marcelo.scerpella@gmail.com",
+    "password": "$2b$10$l0VCLzpxufPzwECCkDx.W.l22.H256URgK2hrpOzS.IIRQK.9KAUW",
+    "role": false,
+    "avatar": "https://randomuser.me/api/portraits/men/75.jpg",
+    "phone": "98987876",
+    "linkedin": "https://www.linkedin.com/in/fernando-diaz-123456789/",
+    "wallet": "Wallet conectada: ",
+    "specialization": "Frontend",
+    "technologies": "Vue, Angular, React, Flutter",
+    "portfolio": "tarket.site/portfolio",
+    "id": "mc00bzzt",
+    "created": "2025-06-17T04:12:38.065Z"
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "index": 0,
+    "timestamp": 1750135172156,
+    "contractHash": "c2fe64c067e3e9c751995a69b3e6b5a0221ab5c61151fbfe40bf47360c724b10",
+    "contract": {
+      "owner": "Javier Perez",
+      "data": {
+        "step": 5,
+        "title": "Desarrollo de Villa Hospedajes",
+        "description": "Quiero que desarrollen una página para mi villa pasta, por favor.",
+        "developer": {
+          "id": 101,
+          "name": "Javier Carlos Pachas Torres",
+          "rating": 4.8,
+          "contracts": 12
+        },
+        "url": "drive.google.com/share?usp=3524363lkjl5wngljn2lj4g",
+        "status": "Activo",
+        "date": "16/6/2025",
+        "milestones": [
+          {
+            "name": "Denme todo el proyecto completado",
+            "deadline": "2025-06-17T05:00:00.000Z",
+            "amount": 12000
+          }
+        ],
+        "total": 12000
+      },
+      "timestamp": 1750135172155,
+      "hash": "c2fe64c067e3e9c751995a69b3e6b5a0221ab5c61151fbfe40bf47360c724b10"
+    },
+    "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "nonce": 9789223,
+    "hash": "0000002daef773464d5bddffe5c3a0050fcc6d1ededd78e19dde47e54b200ec9"
+  },
+  {
+    "index": 1,
+    "timestamp": 1750135395115,
+    "contractHash": "e34a52d13a4cce303d25b966e7e676ec299293a5ac8c956332c6093be4d5cc21",
+    "contract": {
+      "owner": "Javier Perez",
+      "data": {
+        "step": 5,
+        "title": "Nasa Landing Page",
+        "description": "We Want you to create the newest NASA landing page, with a lot of spaceships, and a blue sky in the chineese sun. We are not the chineese government trying to replace the american one. Follow the red sun in the sky",
+        "developer": {
+          "id": 101,
+          "name": "Javier Carlos Pachas Torres",
+          "rating": 4.8,
+          "contracts": 12
+        },
+        "url": "google.com",
+        "status": "Pendiente",
+        "date": "16/6/2025",
+        "milestones": [
+          {
+            "name": "Add Mao Zhe Dong as the main leader of the page",
+            "deadline": "2025-06-20T05:00:00.000Z",
+            "amount": 25000
+          },
+          {
+            "name": "Add the Mao Zhe Dong Theme as the landing page's default music",
+            "deadline": "2025-06-28T05:00:00.000Z",
+            "amount": 18000
+          }
+        ],
+        "total": 43000
+      },
+      "timestamp": 1750135395113,
+      "hash": "e34a52d13a4cce303d25b966e7e676ec299293a5ac8c956332c6093be4d5cc21"
+    },
+    "previousHash": "0000002daef773464d5bddffe5c3a0050fcc6d1ededd78e19dde47e54b200ec9",
+    "nonce": 1313495,
+    "hash": "00000049a3c89938a4ea3e0aafc1aae02da411cc7d9eb136e51a11798e8adfc5"
+  }
+]
