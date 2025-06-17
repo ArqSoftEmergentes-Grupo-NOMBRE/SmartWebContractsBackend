@@ -1,4 +1,4 @@
-package com.smart.smartwebcontracts.deliverables.domain.repository;
+package com.smart.smartwebcontracts.deliverables.infrastructure.persistence.jpa;
 
 import com.smart.smartwebcontracts.deliverables.domain.model.Deliverable;
 import org.springframework.data.jpa.repository.JpaRepository;

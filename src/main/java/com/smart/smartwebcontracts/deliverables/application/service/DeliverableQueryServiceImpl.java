@@ -1,7 +1,7 @@
 package com.smart.smartwebcontracts.deliverables.application.service;
 
 import com.smart.smartwebcontracts.deliverables.domain.model.Deliverable;
-import com.smart.smartwebcontracts.deliverables.domain.repository.DeliverableRepository;
+import com.smart.smartwebcontracts.deliverables.infrastructure.persistence.jpa.DeliverableRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
