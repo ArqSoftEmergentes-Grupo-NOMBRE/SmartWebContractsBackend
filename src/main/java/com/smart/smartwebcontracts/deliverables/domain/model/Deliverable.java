@@ -22,7 +22,7 @@ public class Deliverable {
     private String name;
 
     @Column(nullable = false)
-    private LocalDate date;
+    private LocalDate limit_date;
 
     @Column(nullable = false)
     private String description;
@@ -38,5 +38,7 @@ public class Deliverable {
     private UUID contractId;
 
     // Methods
+    public void SetDeliverableToReview() { this.status = "To Review"; }
+    public void RequestChanges() { this.status = "Changes Required"; }
     public void ApproveDeliverable() { this.status = "Approved"; }
 }
