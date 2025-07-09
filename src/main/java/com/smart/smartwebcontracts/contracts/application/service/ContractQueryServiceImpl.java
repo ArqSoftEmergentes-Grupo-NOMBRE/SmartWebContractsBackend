@@ -4,6 +4,7 @@ import com.smart.smartwebcontracts.contracts.domain.model.Contract;
 import com.smart.smartwebcontracts.contracts.domain.repository.ContractRepository;
 import com.smart.smartwebcontracts.contracts.infrastructure.blockchain.BlockchainContractAdapter;
 import com.smart.smartwebcontracts.contracts.infrastructure.blockchain.dto.HashRecordDTO;
+import com.smart.smartwebcontracts.contracts.infrastructure.blockchain.dto.SmartContractDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,4 +37,9 @@ public class ContractQueryServiceImpl {
     public List<HashRecordDTO> handleGetAllHashRecords() {
         return blockchainAdapter.getAllStoredHashes();
     }
+
+    public List<SmartContractDTO> handleGetAllSmartContracts() {
+        return blockchainAdapter.getAllSmartContracts();
+    }
+
 }

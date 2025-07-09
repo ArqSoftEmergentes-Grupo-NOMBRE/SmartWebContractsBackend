@@ -4,6 +4,7 @@ import com.smart.smartwebcontracts.contracts.application.service.ContractCommand
 import com.smart.smartwebcontracts.contracts.application.service.ContractQueryServiceImpl;
 import com.smart.smartwebcontracts.contracts.infrastructure.blockchain.dto.HashRecordDTO;
 import com.smart.smartwebcontracts.contracts.domain.model.Contract;
+import com.smart.smartwebcontracts.contracts.infrastructure.blockchain.dto.SmartContractDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -69,6 +70,14 @@ public class ContractController {
         String txHash = contractCommandService.registerContractHashOnBlockchain(hash);
         return ResponseEntity.ok(txHash);
     }
+
+
+    @GetMapping("/blockchain/contracts")
+    public ResponseEntity<List<SmartContractDTO>> getAllContractsFromBlockchain() {
+        List<SmartContractDTO> contracts = contractQueryService.handleGetAllSmartContracts();
+        return ResponseEntity.ok(contracts);
+    }
+
 
 
 }

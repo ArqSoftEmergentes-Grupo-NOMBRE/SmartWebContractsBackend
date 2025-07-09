@@ -19,15 +19,27 @@ public class ContractCommandServiceImpl {
 
     public Contract handleCreateContract(UUID clientId, UUID developerId, UUID webServiceId) {
         Contract contract = Contract.builder()
-                .id(UUID.randomUUID())
                 .clientId(clientId)
                 .developerId(developerId)
                 .webServiceId(webServiceId)
                 .startDate(LocalDate.now())
                 .status("CREADO")
                 .build();
+
+
+        // 1. Guarda el contrato en la base de datos
+        contract = contractRepository.save(contract);
+
+        // 2. Lo registra en la blockchain con todos sus datos
+        String txHash = blockchainContractAdapter.registerFullContractOnBlockchain(contract);
+
+        // 3. Guarda el transaction hash devuelto por Ethereum
+        contract.setSmartContractHash(txHash);
+
+        // 4. Vuelve a guardar con el hash
         return contractRepository.save(contract);
     }
+
 
     public Contract handleSignContract(UUID contractId) {
         Contract contract = contractRepository.findById(contractId)
