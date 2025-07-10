@@ -5,6 +5,7 @@ import com.smart.smartwebcontracts.contracts.application.service.ContractQuerySe
 import com.smart.smartwebcontracts.contracts.infrastructure.blockchain.dto.HashRecordDTO;
 import com.smart.smartwebcontracts.contracts.domain.model.Contract;
 import com.smart.smartwebcontracts.contracts.infrastructure.blockchain.dto.SmartContractDTO;
+import com.smart.smartwebcontracts.contracts.interfaces.rest.dto.ContractRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +22,13 @@ public class ContractController {
     private final ContractQueryServiceImpl contractQueryService;
 
     // Crear contrato
+// Crear contrato
     @PostMapping
-    public ResponseEntity<Contract> createContract(
-            @RequestParam UUID clientId,
-            @RequestParam UUID developerId,
-            @RequestParam UUID webServiceId) {
-        Contract contract = contractCommandService.handleCreateContract(clientId, developerId, webServiceId);
+    public ResponseEntity<Contract> createContract(@RequestBody ContractRequestDTO dto) {
+        Contract contract = contractCommandService.handleCreateContract(dto);
         return ResponseEntity.ok(contract);
     }
+
 
     // Firmar contrato
     @PostMapping("/{id}/sign")

@@ -81,7 +81,7 @@ public class BlockchainContractAdapter {
             String clientId = contract.getClientId().toString();
             String developerId = contract.getDeveloperId().toString();
             String webServiceId = contract.getWebServiceId().toString();
-            BigInteger startDate = BigInteger.valueOf(contract.getStartDate().toEpochDay()); // día desde 1970
+            BigInteger startDate = BigInteger.valueOf(contract.getFechaInicio().toEpochDay());
             String status = contract.getStatus();
 
             log.info("Calling createContract(...) with data: {}, {}, {}, {}, {}, {}",
