@@ -79,5 +79,11 @@ public class ContractController {
     }
 
 
+    // Obtener todos los contratos
+    @GetMapping
+    public ResponseEntity<List<Contract>> getAllContracts() {
+        List<Contract> contracts = contractQueryService.handleGetAllContracts();
+        return ResponseEntity.ok(contracts);
+    }
 
 }

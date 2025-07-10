@@ -41,5 +41,9 @@ public class ContractQueryServiceImpl {
     public List<SmartContractDTO> handleGetAllSmartContracts() {
         return blockchainAdapter.getAllSmartContracts();
     }
+    public List<Contract> handleGetAllContracts() {
+        return contractRepository.findAll();
+    }
+
 
 }
