@@ -1,6 +1,6 @@
 # tarket_contracts
 
-This template should help get you started developing with Vue 3 in Vite.
+Aqui hemos creado el codigo del RESTful API de Tarket Contracts el cual tiene el proposito de unir las funcionalidades de blockchain con el frontend.
 
 ## Recommended IDE Setup
 
