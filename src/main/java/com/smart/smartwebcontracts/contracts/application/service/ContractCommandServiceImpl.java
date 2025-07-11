@@ -123,7 +123,4 @@ public class ContractCommandServiceImpl {
         return deliverable;
     }
 
-
-
-
 }
