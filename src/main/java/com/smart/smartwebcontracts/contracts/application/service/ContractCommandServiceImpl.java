@@ -105,15 +105,24 @@ public class ContractCommandServiceImpl {
         deliverable.setArchivoEntregadoURL(dto.getArchivoEntregadoURL());
         deliverable.setDescripcion(dto.getDescripcion());
 
-        if (dto.getEstado() != null) {
+        if (dto.getEstado() != null && !dto.getEstado().isEmpty()) {
             deliverable.setEstado(DeliverableStatus.valueOf(dto.getEstado()));
+        } else {
+            deliverable.setEstado(DeliverableStatus.ENTREGADO);
         }
 
-        // Al persistir el contrato, se persisten los cambios de los entregables.
-        contractRepository.save(contract);
+        // Verificar si todos los entregables están ENTREGADOS
+        boolean todosEntregados = contract.getEntregables().stream()
+                .allMatch(e -> e.getEstado() == DeliverableStatus.ENTREGADO);
 
+        if (todosEntregados) {
+            contract.setStatus("ENVIADO");  // O el nombre exacto que estés usando
+        }
+
+        contractRepository.save(contract);
         return deliverable;
     }
+
 
 
 
