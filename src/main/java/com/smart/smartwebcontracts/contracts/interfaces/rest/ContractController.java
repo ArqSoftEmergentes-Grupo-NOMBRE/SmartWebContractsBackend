@@ -2,10 +2,12 @@ package com.smart.smartwebcontracts.contracts.interfaces.rest;
 
 import com.smart.smartwebcontracts.contracts.application.service.ContractCommandServiceImpl;
 import com.smart.smartwebcontracts.contracts.application.service.ContractQueryServiceImpl;
+import com.smart.smartwebcontracts.contracts.domain.model.ContractDeliverable;
 import com.smart.smartwebcontracts.contracts.infrastructure.blockchain.dto.HashRecordDTO;
 import com.smart.smartwebcontracts.contracts.domain.model.Contract;
 import com.smart.smartwebcontracts.contracts.infrastructure.blockchain.dto.SmartContractDTO;
 import com.smart.smartwebcontracts.contracts.interfaces.rest.dto.ContractRequestDTO;
+import com.smart.smartwebcontracts.contracts.interfaces.rest.dto.DeliverableSubmissionDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -94,5 +96,15 @@ public class ContractController {
         Contract updatedContract = contractCommandService.updateContractStatus(id, status);
         return ResponseEntity.ok(updatedContract);
     }
+
+    @PutMapping("/{contractId}/deliverables/{deliverableId}/submission")
+    public ResponseEntity<ContractDeliverable> submitDeliverable(
+            @PathVariable UUID contractId,
+            @PathVariable UUID deliverableId,
+            @RequestBody DeliverableSubmissionDTO dto) {
+        ContractDeliverable updated = contractCommandService.handleDeliverableSubmission(contractId, deliverableId, dto);
+        return ResponseEntity.ok(updated);
+    }
+
 
 }

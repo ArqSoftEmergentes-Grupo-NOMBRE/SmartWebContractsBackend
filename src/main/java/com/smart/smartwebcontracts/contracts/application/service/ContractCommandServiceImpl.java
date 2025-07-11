@@ -7,6 +7,7 @@ import com.smart.smartwebcontracts.contracts.interfaces.rest.dto.ContractRequest
 import com.smart.smartwebcontracts.contracts.domain.model.ContractDeliverable;
 import com.smart.smartwebcontracts.contracts.domain.model.DeliverableStatus;
 
+import com.smart.smartwebcontracts.contracts.interfaces.rest.dto.DeliverableSubmissionDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -91,6 +92,29 @@ public class ContractCommandServiceImpl {
         contract.setStatus(nuevoEstado);
         return contractRepository.save(contract);
     }
+
+    public ContractDeliverable handleDeliverableSubmission(UUID contractId, UUID deliverableId, DeliverableSubmissionDTO dto) {
+        Contract contract = contractRepository.findById(contractId)
+                .orElseThrow(() -> new IllegalArgumentException("Contrato no encontrado"));
+
+        ContractDeliverable deliverable = contract.getEntregables().stream()
+                .filter(e -> e.getId().equals(deliverableId))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Entregable no encontrado"));
+
+        deliverable.setArchivoEntregadoURL(dto.getArchivoEntregadoURL());
+        deliverable.setDescripcion(dto.getDescripcion());
+
+        if (dto.getEstado() != null) {
+            deliverable.setEstado(DeliverableStatus.valueOf(dto.getEstado()));
+        }
+
+        // Al persistir el contrato, se persisten los cambios de los entregables.
+        contractRepository.save(contract);
+
+        return deliverable;
+    }
+
 
 
 }
