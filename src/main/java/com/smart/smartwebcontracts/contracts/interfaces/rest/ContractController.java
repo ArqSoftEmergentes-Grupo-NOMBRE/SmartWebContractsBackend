@@ -86,4 +86,13 @@ public class ContractController {
         return ResponseEntity.ok(contracts);
     }
 
+    @PutMapping("/{id}/status")
+    public ResponseEntity<Contract> updateContractStatus(
+            @PathVariable UUID id,
+            @RequestParam String status
+    ) {
+        Contract updatedContract = contractCommandService.updateContractStatus(id, status);
+        return ResponseEntity.ok(updatedContract);
+    }
+
 }

@@ -30,12 +30,11 @@ public class ContractCommandServiceImpl {
                 .fechaInicio(dto.getFechaInicio() != null ? dto.getFechaInicio() : LocalDate.now())
                 .fechaFin(dto.getFechaFin())
                 .precioTotal(dto.getPrecioTotal())
-                .contractExplorerUrl(dto.getContractExplorerUrl())
+                .contractExplorerUrl(null)  // se define luego del registro en blockchain
                 .status("CREADO")
-                .entregables(new ArrayList<>()) // 👈 FALTABA ESTO
+                .entregables(new ArrayList<>())
                 .build();
 
-        // 🧱 Final para uso seguro en lambda
         final Contract contractFinal = newContract;
 
         if (dto.getEntregables() != null) {
@@ -57,9 +56,11 @@ public class ContractCommandServiceImpl {
 
         String txHash = blockchainContractAdapter.registerFullContractOnBlockchain(saved);
         saved.setSmartContractHash(txHash);
+        saved.setContractExplorerUrl("https://sepolia.etherscan.io/tx/" + txHash);
 
         return contractRepository.save(saved);
     }
+
 
 
 
@@ -82,5 +83,14 @@ public class ContractCommandServiceImpl {
     public String registerContractHashOnBlockchain(String hash) {
         return blockchainContractAdapter.registerContractHashOnBlockchain(hash);
     }
+
+    public Contract updateContractStatus(UUID contractId, String nuevoEstado) {
+        Contract contract = contractRepository.findById(contractId)
+                .orElseThrow(() -> new IllegalArgumentException("Contrato no encontrado"));
+
+        contract.setStatus(nuevoEstado);
+        return contractRepository.save(contract);
+    }
+
 
 }
