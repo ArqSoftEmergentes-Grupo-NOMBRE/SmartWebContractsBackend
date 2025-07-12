@@ -131,4 +131,28 @@
         </plugins>
     </build>
 
+    <!-- Perfil para desactivar plugin Web3j en producción o Docker -->
+    <profiles>
+        <profile>
+            <id>no-solidity</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.web3j</groupId>
+                        <artifactId>web3j-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>default</id>
+                                <phase>none</phase> <!-- evita que se ejecute -->
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
+
+
 </project>
